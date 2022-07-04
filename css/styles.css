@@ -148,6 +148,10 @@ ul {
   background-color: var(--button-hover);
 }
 
+input {
+  outline: none;
+}
+
 /* Модальне вiкно */
 
 .close-btn {
@@ -245,7 +249,6 @@ ul {
   padding: 11px 12px 11px 42px;
   border-radius: 4px;
   border: var(--border-input-modal);
-  outline: none;
   transition: border 250ms var(--cubic-bezier);
 }
 
