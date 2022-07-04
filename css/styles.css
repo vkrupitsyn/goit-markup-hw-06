@@ -21,8 +21,12 @@
   --portf-thumb-bg-color: rgba(33, 150, 243, 0.9);
   --modal-opacity-bg: rgba(0, 0, 0, 0.2);
   --border-close-btn: rgba(0, 0, 0, 0.1);
+  --button-hover: #188ce8;
+  --box-shadow-btn: 0px 4px 4px rgba(0, 0, 0, 0.15);
   --border-input: 1px solid rgba(255, 255, 255, 0.3);
+  --border-input-focus: 1px solid #2196f3;
   --border-input-modal: 1px solid rgba(33, 33, 33, 0.2);
+  --placeholder-text: rgba(117, 117, 117, 0.5);
 }
 
 /* Загальні стилі */
@@ -135,14 +139,13 @@ ul {
 
   background-color: var(--accent-color);
   color: var(--primary-color);
+  box-shadow: var(--box-shadow-btn);
   transition: border 250ms var(--cubic-bezier), background-color 250ms var(--cubic-bezier),
     color 250ms var(--cubic-bezier);
 }
 .main-button:hover,
 .main-button:focus {
-  border: 1px solid var(--accent-color);
-  background-color: var(--primary-color);
-  color: var(--accent-color);
+  background-color: var(--button-hover);
 }
 
 /* Модальне вiкно */
@@ -155,6 +158,8 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
+  margin: 0;
 
   width: 30px;
   height: 30px;
@@ -162,12 +167,18 @@ ul {
   border-radius: 50%;
   background-color: var(--primary-color);
   border: 1px solid var(--border-close-btn);
+  cursor: pointer;
+}
+
+.close-btn:hover .close-btn-icon {
+  fill: var(--accent-color);
 }
 
 .close-btn-icon {
   display: block;
   margin: auto;
-  cursor: pointer;
+  fill: currentColor;
+  transition: fill 250ms var(--cubic-bezier);
 }
 
 .backdrop.is-hidden {
@@ -204,9 +215,14 @@ ul {
   opacity: 1;
   transition: opacity 250ms var(--cubic-bezier);
 }
+
+/* Форма */
+
 .form-title {
   display: block;
   font-size: 20px;
+  margin-left: 0;
+  margin-right: 0;
   margin-bottom: 12px;
 }
 
@@ -229,6 +245,27 @@ ul {
   padding: 11px 12px 11px 42px;
   border-radius: 4px;
   border: var(--border-input-modal);
+  outline: none;
+  transition: border 250ms var(--cubic-bezier);
+}
+
+.form-input:focus-within {
+  border: var(--border-input-focus);
+}
+
+.form-input:focus-within + .form-icon {
+  fill: var(--accent-color);
+}
+
+.form-icon {
+  position: absolute;
+  left: 12px;
+  bottom: 11px;
+  transition: fill 250ms var(--cubic-bezier);
+}
+
+.comment-field {
+  margin-bottom: 0;
 }
 
 .textarea {
@@ -239,90 +276,72 @@ ul {
   height: 120px;
   margin-bottom: 20px;
 }
+
+.textarea::placeholder {
+  color: var(--placeholder-text);
+}
+
 .checkbox-field {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
   margin-bottom: 30px;
 }
 
-.form-icon {
+.label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 24px;
+  color: var(--secondary-text-color);
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   position: absolute;
-  left: 12px;
-  bottom: 11px;
+}
+
+.checkbox:checked ~ .checkbox-cheked {
+  opacity: 1;
+}
+
+.checkbox-no-cheked {
+  display: block;
+  width: 16px;
+  height: 15px;
+  position: absolute;
+  left: 0;
+  border: 2px solid var(--primary-text-color);
+  border-radius: 2px;
+}
+
+.checkbox-cheked {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: opacity 250ms var(--cubic-bezier);
+}
+
+.checkbox-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--accent-color);
+  fill: var(--primary-color);
+  border-radius: 2px;
+}
+
+.checkbox-link {
+  color: var(--accent-color);
 }
 
 .form-button {
   display: block;
   margin: 0 auto;
 }
-/* .modal-form {
-  padding-top: 30px;
-}
-
-.form-field {
-  display: block;
-  position: relative;
-  margin-bottom: 28px;
-}
-
-.form-field.agree {
-  padding-left: 24px;
-}
-
-.textarea {
-  display: block;
-  width: 100%;
-  min-height: 120px;
-  padding: 11px 12px;
-  border-radius: 4px;
-  border: var(--border-input-modal);
-  resize: none;
-}
-
-.input-modal {
-  width: 100%;
-  padding: 11px 12px 11px 42px;
-  border-radius: 4px;
-  border: var(--border-input-modal);
-}
-
-.form-label {
-  position: absolute;
-  left: 0;
-  top: -4px;
-  transform: translateY(-100%);
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.01em;
-
-  color: var(--secondary-text-color);
-}
-
-.form-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.checkbox-input {
-  position: absolute;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.checkbox-icon-checked {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  border-radius: 4px;
-  background-color: var(--accent-color);
-  fill: var(--primary-color);
-} */
 
 /* Логотип */
 
@@ -782,10 +801,6 @@ customerslist .link:active .icon {
   padding: 0 29px;
 }
 
-.footer-button:hover .send-icon,
-.footer-button:active .send-icon {
-  fill: var(--accent-color);
-}
 /* Портфоліо */
 
 .portf-btn {
