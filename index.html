@@ -387,6 +387,41 @@
           <b class="form-title">Оставьте свои данные, мы вам перезвоним</b>
           <form class="modal-form">
             <div class="form-field">
+              <label for="name" class="form-label">Имя</label>
+              <input type="text" class="form-input" id="name" />
+              <svg class="form-icon" width="18" height="18">
+                <use href="./images/symbol-defs.svg#person-modal"></use>
+              </svg>
+            </div>
+            <div class="form-field">
+              <label for="phone" class="form-label">Телефон</label>
+              <input type="tel" class="form-input" id="phone" />
+              <svg class="form-icon" width="18" height="18">
+                <use href="./images/symbol-defs.svg#phone-modal"></use>
+              </svg>
+            </div>
+            <div class="form-field">
+              <label for="email" class="form-label">Почта</label>
+              <input type="email" class="form-input" id="email" />
+              <svg class="form-icon" width="18" height="18">
+                <use href="./images/symbol-defs.svg#email-modal"></use>
+              </svg>
+            </div>
+            <div class="form-field">
+              <label for="comment" class="form-label">Комментарий</label>
+              <textarea
+                type="text"
+                class="textarea"
+                id="comment"
+                placeholder="Введите текст"
+              ></textarea>
+            </div>
+            <div class="form-field checkbox-field">
+              <input type="checkbox" class="checkbox" />
+              <span>Соглашаюсь с рассылкой и принимаю <a href="#">Условия договора</a></span>
+            </div>
+            <button type="submit" class="form-button main-button">Отправить</button>
+            <!-- <div class="form-field">
               <label class="form-label" for="name">Имя</label>
               <input class="input-modal" type="text" id="name" />
               <svg class="form-icon" width="18" height="18">
@@ -407,6 +442,23 @@
                 <use href="./images/symbol-defs.svg#mail-modal"></use>
               </svg>
             </div>
+            <div class="form-field">
+              <label class="form-label" for="comment">Комментарий</label>
+              <textarea
+                name="comment"
+                rows="3"
+                сlass="textarea"
+                placeholder="Введите текст"
+              ></textarea>
+            </div>
+            <div class="form-field agree">
+              <input class="checkbox-input" type="checkbox" />Соглашаюсь с рассылкой и принимаю
+              <a href="#">Условия договора</a>
+                <svg class="checkbox-icon-checked" width="16" height="15">
+                  <use href="images/symbol-defs.svg#checkbox"></use>
+                </svg>
+              </span>
+            </div> -->
           </form>
         </div>
       </div>
